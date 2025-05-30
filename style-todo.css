@@ -1,0 +1,224 @@
+:root{
+    --box-color : #212020;
+    --main-color : #f0c20c;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Reddit Sans", sans-serif;
+    color:#dfdfd8;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background-color: #f7eef6;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 500px;
+    height: auto;
+    max-height: 90vh;
+    background-color: #000;
+    text-align: center;
+    margin: 20px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: start;
+    align-items: center;
+}
+.greet {
+    background-color: var(--box-color);
+}
+#input-task{
+    padding: 0 20px;
+    background-color: var(--box-color);
+ 
+}
+.add-tasks{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+    gap: 7px;
+}
+.add-tasks input{ 
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+.add-tasks button{
+   width: 45px;
+   height: 40px;
+   border: 1px solid #414040;
+   outline: none;
+   border-radius: 40%;
+   background-color: var(--box-color);
+}
+.add-tasks button:hover{
+    background-color: var(--main-color);
+    cursor:pointer;
+    transform: scale(1.1);
+}
+.status{
+    background-color: var(--box-color);
+}
+.status span{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 80px;
+}
+#percentage{
+    color: var(--main-color);
+    font-weight: 800;
+}
+.greet, .status{
+    width: 100%;
+    height: auto;
+    text-align: start;
+    margin: 0 30px;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+.status .status-bar{
+    width: 100%;
+    height: 12px;
+    text-align: center;
+    background-color: #88867e;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.inner{
+    height: 100%;
+    background-color: #d2c17b;
+    border-radius: 10px;
+}
+.progress {
+   align-self: flex-start;
+   margin-left: 0;
+   margin-bottom: 0;
+   margin-top: 7px; 
+}
+.items{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    margin-top: 7px;
+}
+.items button{
+    width: 45px;
+    height: 32px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: var(--main-color);
+    background-color:  #383838;
+   
+}
+.items button:hover{
+    transform: scale(1.1);
+    background-color:  #978f76;
+}
+#tasks-list li{
+    list-style: none;
+}
+#tasks-list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y:  auto ;
+}
+.renderList{
+   width: inherit;
+   height: auto;
+   padding: 10px 20px;
+   background-color: var(--box-color);
+   border-radius: 8px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+}
+.checkbox {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: none;
+  outline: none;
+  border-radius: 40%;
+  background-color: #eddede;
+  cursor: pointer;
+}
+.checkbox:checked {
+  background-color:#292828; 
+}
+.checkbox:checked::after {
+  content: "💛";
+}
+
+.checkbox:hover{
+  transform: scale(1.1);
+}
+.renderList span{
+   display: inline-flex;
+   align-items: center;
+   gap: 9px;
+}
+.renderList button{
+   width: 20px;
+   height: 20px;
+   font-size: 0.5rem;
+   background: none;
+   border-radius: 50%;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   background-color: #bda12e;
+}
+.renderList button:hover{
+    transform: scale(1.1);
+    background-color: #f0c58d;
+}
+.hidden {
+    display: none;    /*for toggle render save tasks*/
+}
+
+
+@media screen and (max-width: 600px){
+    *{
+    font-size: 1rem;
+   }
+   .container{
+    max-width: 350px;
+   }
+   .status .status-bar{
+    height: 8px;
+   }
+   .status p{
+    font-size: 0.9rem;
+   }
+   .greet p{
+    font-size: 0.9rem;
+   }
+}
