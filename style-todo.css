@@ -155,7 +155,7 @@ body{
     gap: 10px;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: #7b96a2 #95a0a4;   /*trumb  track*/
+    scrollbar-color: #397d9a #adb9be;   /*trumb  track*/
 }
 .renderList{
    width: inherit;
@@ -174,7 +174,6 @@ body{
   height: 17px;
   border: none;
   outline: none;
-  border-radius: 40%;
   background-color: #424141;
   cursor: pointer;
   display: flex;
@@ -187,7 +186,7 @@ body{
 }
 .checkbox:checked::after {
   content: "";
-  background-image: url('images/check.png');
+  background-image: url('images/check1.png');
   background-size: cover;
   width: 20px;
   height: 20px;
