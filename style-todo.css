@@ -2,12 +2,11 @@
     --box-color : #212020;
     --main-color : #f0c20c;
 }
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Reddit Sans", sans-serif;
+    font-family: "Geist", sans-serif;
     color:#dfdfd8;
 }
 body{
@@ -35,6 +34,12 @@ body{
     gap: 8px;
     text-align: start;
     align-items: center;
+    position: relative;     /*set relative for child*/
+}
+#toggle{
+    position: absolute;   /*follow parent relative*/
+    top: 0;
+    right: 0;
 }
 .greet {
     background-color: var(--box-color);
@@ -60,10 +65,13 @@ body{
     border-radius: 8px;
     font-size: 1rem;
 }
+.add-tasks input:hover{
+    border: 1px solid #b3acac;
+}
 .add-tasks button{
    width: 45px;
    height: 40px;
-   border: 1px solid #414040;
+   border: 1px solid #333333;
    outline: none;
    border-radius: 40%;
    background-color: var(--box-color);
@@ -99,7 +107,7 @@ body{
     width: 100%;
     height: 12px;
     text-align: center;
-    background-color: #88867e;
+    background-color: #3b3b39;
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -126,18 +134,16 @@ body{
 .items button{
     width: 45px;
     height: 32px;
-    border: none;
+    border: 1px solid #414040;
     outline: none;
-    border-radius: 50%;
+    border-radius: 30px;
     font-size: 0.8rem;
     cursor: pointer;
     color: var(--main-color);
-    background-color:  #383838;
-   
+    background-color:  #383838; 
 }
 .items button:hover{
     transform: scale(1.1);
-    background-color:  #978f76;
 }
 #tasks-list li{
     list-style: none;
@@ -147,7 +153,9 @@ body{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    overflow-y:  auto ;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #7b96a2 #95a0a4;   /*trumb  track*/
 }
 .renderList{
    width: inherit;
@@ -162,19 +170,27 @@ body{
 }
 .checkbox {
   appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
   border: none;
   outline: none;
   border-radius: 40%;
-  background-color: #eddede;
+  background-color: #424141;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;        /* equal to font size so checked character is in vertically middle*/
 }
 .checkbox:checked {
   background-color:#292828; 
 }
 .checkbox:checked::after {
-  content: "💛";
+  content: "";
+  background-image: url('images/check.png');
+  background-size: cover;
+  width: 20px;
+  height: 20px;
 }
 
 .checkbox:hover{
@@ -185,23 +201,23 @@ body{
    align-items: center;
    gap: 9px;
 }
-.renderList button{
-   width: 20px;
-   height: 20px;
-   font-size: 0.5rem;
+.edit-btn, .delete-btn{
+   width: 22px;
+   height: 22px;
+   font-size: 0.7rem;
    background: none;
    border-radius: 50%;
    border: none;
    outline: none;
    cursor: pointer;
-   background-color: #bda12e;
+   background-color: #c5aa3d;
 }
 .renderList button:hover{
     transform: scale(1.1);
     background-color: #f0c58d;
 }
 .hidden {
-    display: none;    /*for toggle render save tasks*/
+    display: none !important;    /*force hidden before toggle to render tasks*/
 }
 
 
@@ -210,7 +226,15 @@ body{
     font-size: 1rem;
    }
    .container{
-    max-width: 350px;
+    max-width: 80%;
+   }
+   .add-tasks input{ 
+    height: 30px;
+    font-size: 0.8rem;
+   }
+   .add-tasks button{
+   width: 40px;
+   height: 30px;
    }
    .status .status-bar{
     height: 8px;
@@ -218,7 +242,22 @@ body{
    .status p{
     font-size: 0.9rem;
    }
-   .greet p{
-    font-size: 0.9rem;
+   .items button{
+    width: 35px;
+    height: 30px;
+    font-size: 0.7rem;
    }
+   .renderList p{
+    font-size: 0.8rem;
+   }
+   .edit-btn, .delete-btn{
+    width: 22px;
+    height: 22px;
+   }
+   .edit-btn i, .delete-btn i{    /*i = icon(reduce icon size) unable to reduce by font size*/
+     font-size: 0.6rem;
+   }
+   #tasks-list{
+   scrollbar-width: none;
+  }
 }

@@ -36,7 +36,7 @@ body{
 }
 .container button{
     border-radius: 5px;
-    border: none;
+    border: 1px solid #c6cf8c; 
     padding: 10px 50px;
     background-color: #eae44e;
     color: #000;
@@ -46,6 +46,7 @@ body{
 .container button:hover{
     cursor: pointer;
     background-color:#eefc98;
+    transform: scale(1.1);
 }
 @media screen and (max-width: 600px){
     .container h1{

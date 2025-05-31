@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!--cdn-->
 </head>
 <body>
-
+ 
     <div class="container">
+            <i id="toggle" class="fa-solid fa-toggle-on"></i>
         <div class="greet">
-            <h3>What's up for today?</h3>
-            <p>Keep going!🌸</p>
+            <h3 id="greet-message"></h3>  <!--cheer message-->
         </div> 
         <div class="add-tasks">
             <input type="text" id="input-task">
@@ -25,12 +25,12 @@
         <h3 class="progress">Progress</h3>   
         <div class="status"> 
              <span><p id='tasks-done'>0/0 Task Completed</p><p id="percentage">0%</p></span> 
-             <div class="status-bar"></div>
+             <div class="status-bar"></div>       <!--progress bar-->
         </div>
          <div class="items">
             <h3 class="tasks">Your Tasks</h3>
             <button class="items-btn">See</button></div>
-         <ul id="tasks-list"></ul>   
+         <ul id="tasks-list" class="hidden"></ul>        <!--show/toggle tasks-->
     </div>
 
 </body>

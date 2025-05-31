@@ -44,7 +44,7 @@ function addTasks(){
          progressUpdate();
          saveTaskstoLocal();
       } 
-   })
+   });
 
    // apply to all edit btn and select the target event
    document.addEventListener('click',(e)=>{
@@ -62,6 +62,7 @@ function addTasks(){
    document.addEventListener('change', (e) => { 
     if (e.target.classList.contains('checkbox')){
         progressUpdate();
+        saveTaskstoLocal();
     }
 });
 
@@ -70,10 +71,10 @@ function progressUpdate(){
    const finishedTasks = document.querySelectorAll('#tasks-list .checkbox:checked').length; // target all checked checkbox 
    const currentTasks = `${finishedTasks} / ${totalTasks} Tasks Completed`;
 
-   const tasksDone = document.getElementById('tasks-done');
+   const tasksDone = document.getElementById('tasks-done');   //show tasks complete
    tasksDone.textContent = currentTasks;
 
-   const percentage = totalTasks === 0 ? "0%" : `${Math.round((finishedTasks/totalTasks) * 100)}%`;
+   const percentage = totalTasks === 0 ? "0%" : `${Math.round((finishedTasks/totalTasks) * 100)}%`; //round number
    document.getElementById('percentage').textContent = percentage;    // update percentage status target html
 
    progressBar(percentage);
@@ -95,21 +96,39 @@ function progressUpdate(){
   };
  
     progressBar.innerHTML =`<div class="inner" style="${widthStyle}"></div>`;
- }
+
+   let textMsg = document.getElementById('greet-message');
+
+   if(value < 50){
+      textMsg.textContent = "What's up for today?🌻";
+   } 
+   if(value >= 50){
+      textMsg.textContent = "🤗Haft way to go";
+   } 
+   if(value >= 75){
+      textMsg.textContent = "😃Keep going!";
+   }
+   if(value === 100){
+      textMsg.textContent = "🎉Your Goal Complete!";
+   }
+ };
 
 function saveTaskstoLocal(){
    const tasksInApp = document.querySelectorAll('#tasks-list li');  //nodelist
-   const tasksArray =  [...tasksInApp].map(task=>task.querySelector('p').textContent); // convert to array for save
+   const tasksArray =  [...tasksInApp].map(task=>{       // convert to array for save
+           return {text: task.querySelector('p').textContent, 
+            completed: task.querySelector('.checkbox').checked }              
+      }); 
 
    return localStorage.setItem('tasksInApp',JSON.stringify(tasksArray)); // always save tasks in localstorage even no task
-}
-
-function getTasks(){
-   const getTasks = localStorage.getItem('tasksInApp');
-   return getTasks ? JSON.parse(getTasks): [];   // convert JSON to array or null (if no local data)
 };
 
-function showTasks(){
+function getTasks(){
+   const storedTasks = localStorage.getItem('tasksInApp');
+   return storedTasks ? JSON.parse(storedTasks): [];   // convert JSON to array or null (if no local data)
+};
+
+function renderTasks(){
    const tasksArray = getTasks();
    tasksList.innerHTML ='';  // clear current tasks
 
@@ -117,7 +136,7 @@ function showTasks(){
    const list = document.createElement('li');
    list.innerHTML  = `
    <div class='renderList'>
-   <span><input type='checkbox' class='checkbox'><p>${task}</p></span>
+   <span><input type='checkbox' class='checkbox' ${task.completed ? 'checked' : ''}><p>${task.text}</p></span>
    <div class='btn'>
       <button class='edit-btn'><i class="fa-solid fa-pen"></i></button>
       <button class='delete-btn'><i class="fa-solid fa-minus"></i></button>
@@ -127,11 +146,17 @@ function showTasks(){
    tasksList.appendChild(list);
  });
   progressUpdate();
-}
+};
 
-document.querySelector('.items-btn').addEventListener('click', ()=>{
+window.addEventListener('DOMContentLoaded',()=>{ 
+     renderTasks();  // load tasks from localStorage immediately after DOM ready
+     tasksList.classList.add('hidden');   //ensure tasks list hidden first
+   
+   document.querySelector('.items-btn').addEventListener('click', ()=>{
    tasksList.classList.toggle('hidden'); 
+   });
 });
+
 
 
 
