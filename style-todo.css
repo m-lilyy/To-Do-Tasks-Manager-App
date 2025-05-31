@@ -1,13 +1,38 @@
 :root{
-    --box-color : #212020;
+    --box-color : #212020;    /*default for child box*/
+    --bar-color: #3b3b39;
+    --checkbox-color: #424141;
     --main-color : #f0c20c;
+    --primary-color:#000;
+    --toggle-btn-color:#212020;
+    --font-btn-color:#e9be13;
+    --border-color:#494949;
 }
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Geist", sans-serif;
+    font-family: "Geist", sans-serif;   
+}
+.light{
+    color:#232322;
+    --primary-color: #e8e5e5; 
+    --box-color: #f0f0f0;
+    --bar-color: #e0e0df;
+    --checkbox-color: #e4e2e2;
+    --toggle-btn-color:#212020;
+    --font-btn-color:#bd9701;
+    --border-color:#bbb8b8;    
+}
+.dark{
     color:#dfdfd8;
+     --primary-color:#000;
+     --box-color : #212020;
+     --bar-color: #3b3b39;
+     --checkbox-color: #424141;
+     --toggle-btn-color:#f0f0f0;
+     --font-btn-color:#e9be13;
+     --border-color:#494949;
 }
 body{
     width: 100%;
@@ -23,7 +48,7 @@ body{
     width: 500px;
     height: auto;
     max-height: 90vh;
-    background-color: #000;
+    background-color: var(--primary-color);
     text-align: center;
     margin: 20px;
     padding: 30px;
@@ -34,12 +59,31 @@ body{
     gap: 8px;
     text-align: start;
     align-items: center;
-    position: relative;     /*set relative for child*/
+    position: relative;     
 }
-#toggle{
-    position: absolute;   /*follow parent relative*/
-    top: 0;
-    right: 0;
+#toggle{                       
+    width: 32px;
+    height: 20px;
+    border-radius: 20px;
+    border: 1px solid #5b5a5a;
+    background-color: var(--box-color);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transition: background-color 0.3s ease;
+}
+#toggle-inner{                   /*button*/
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--toggle-btn-color);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    transform: translateX(0);       /*slide from left*/
+}
+
+.container.dark #toggle-inner{
+    transform: translateX(13px);   /*slide to right*/
 }
 .greet {
     background-color: var(--box-color);
@@ -47,7 +91,6 @@ body{
 #input-task{
     padding: 0 20px;
     background-color: var(--box-color);
- 
 }
 .add-tasks{
     width: 100%;
@@ -71,7 +114,8 @@ body{
 .add-tasks button{
    width: 45px;
    height: 40px;
-   border: 1px solid #333333;
+   border: 1px solid var(--border-color);
+   color: var(--primary-light);
    outline: none;
    border-radius: 40%;
    background-color: var(--box-color);
@@ -107,7 +151,7 @@ body{
     width: 100%;
     height: 12px;
     text-align: center;
-    background-color: #3b3b39;
+    background-color: var(--bar-color);
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -132,15 +176,15 @@ body{
     margin-top: 7px;
 }
 .items button{
-    width: 45px;
-    height: 32px;
-    border: 1px solid #414040;
+    width: 35px;
+    height: 28px;
+    border: 1px solid var(--border-color);
     outline: none;
-    border-radius: 30px;
+    border-radius: 10px;
     font-size: 0.8rem;
     cursor: pointer;
-    color: var(--main-color);
-    background-color:  #383838; 
+    color: var(--font-btn-color);
+    background-color:  var(--primary-color); 
 }
 .items button:hover{
     transform: scale(1.1);
@@ -155,7 +199,7 @@ body{
     gap: 10px;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: #397d9a #adb9be;   /*trumb  track*/
+    scrollbar-color: #557988 #929698;   /*trumb  track*/
 }
 .renderList{
    width: inherit;
@@ -174,16 +218,14 @@ body{
   height: 17px;
   border: none;
   outline: none;
-  background-color: #424141;
+  background-color: var(--checkbox-color);  
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;        /* equal to font size so checked character is in vertically middle*/
 }
-.checkbox:checked {
-  background-color:#292828; 
-}
+
 .checkbox:checked::after {
   content: "";
   background-image: url('images/check1.png');
@@ -204,6 +246,7 @@ body{
    width: 22px;
    height: 22px;
    font-size: 0.7rem;
+   color: var(--primary-color);
    background: none;
    border-radius: 50%;
    border: none;

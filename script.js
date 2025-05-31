@@ -158,5 +158,18 @@ window.addEventListener('DOMContentLoaded',()=>{
 });
 
 
+// toggle dark-light theme
+const appContainer = document.querySelector('.light');
+const toggle = document.getElementById('toggle-inner');
+
+toggle.addEventListener('click',()=>{
+   if(appContainer.classList.contains('light')){
+      appContainer.classList.remove('light');
+      appContainer.classList.add('dark');
+   }else{
+      appContainer.classList.remove('dark');
+      appContainer.classList.add('light')
+   }
+})
 
 
