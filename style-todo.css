@@ -2,6 +2,7 @@
     --box-color : #212020;    /*default for child box*/
     --bar-color: #3b3b39;
     --checkbox-color: #424141;
+    --input-field: #dfdfd8;
     --main-color : #f0c20c;
     --primary-color:#000;
     --toggle-btn-color:#212020;
@@ -16,7 +17,8 @@
 }
 .light{
     color:#232322;
-    --primary-color: #e8e5e5; 
+    --primary-color: #e8e5e5;
+    --input-field: #232322;
     --box-color: #f0f0f0;
     --bar-color: #e0e0df;
     --checkbox-color: #e4e2e2;
@@ -27,6 +29,7 @@
 .dark{
     color:#dfdfd8;
      --primary-color:#000;
+     --input-field: #dfdfd8;
      --box-color : #212020;
      --bar-color: #3b3b39;
      --checkbox-color: #424141;
@@ -104,6 +107,7 @@ body{
     width: 100%;
     height: 40px;
     border: none;
+    color: var(--input-field);
     outline: none;
     border-radius: 8px;
     font-size: 1rem;
