@@ -60,7 +60,7 @@ To practice web development skills including:
 
 ## Screenshots
 
-![First Cover App](images/cover.png)
+![First Cover App](images/screen-cover.png)
 ![Light Mode](images/screen-app-light.png)
 ![Dark Mode](images/screen-app-dark.png)
 
